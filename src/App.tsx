@@ -16,7 +16,7 @@ import {
   ThemedLayoutV2,
 } from "@refinedev/mantine";
 
-import dataProvider from "@refinedev/simple-rest";
+import { dataProvider } from "./rest-data-provider";
 import {
   MantineProvider,
   Global,
