@@ -12,8 +12,10 @@ root.render(
     <Auth0Provider
       domain="whoof-dev.us.auth0.com"
       clientId="l5AWlFUz3SUej9LQ1SAbcKEVqp4EysHm"
-      audience="https://whoof/api"
-      redirectUri={window.location.origin}
+      authorizationParams={{
+        audience: "https://whoof/api",
+        redirectUri: window.location.origin,
+      }}
     >
       <App />
     </Auth0Provider>

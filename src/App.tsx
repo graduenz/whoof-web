@@ -55,7 +55,7 @@ function App() {
     defaultValue: "light",
     getInitialValueInEffect: true,
   });
-  const { isLoading, user, logout, getIdTokenClaims } = useAuth0();
+  const { isLoading, user, logout, getAccessTokenSilently } = useAuth0();
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
@@ -71,7 +71,7 @@ function App() {
       };
     },
     logout: async () => {
-      logout({ returnTo: window.location.origin });
+      logout({ logoutParams: { returnTo: window.location.origin }});
       return {
         success: true,
       };
@@ -82,10 +82,10 @@ function App() {
     },
     check: async () => {
       try {
-        const token = await getIdTokenClaims();
+        const token = await getAccessTokenSilently();
         if (token) {
           axios.defaults.headers.common = {
-            Authorization: `Bearer ${token.__raw}`,
+            Authorization: `Bearer ${token}`,
           };
           return {
             authenticated: true,
