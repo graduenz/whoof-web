@@ -53,6 +53,9 @@ dependencies:
   '@tabler/icons':
     specifier: ^1.119.0
     version: 1.119.0(react-dom@18.2.0)(react@18.2.0)
+  '@tanstack/react-table':
+    specifier: ^8.10.3
+    version: 8.10.3(react-dom@18.2.0)(react@18.2.0)
   axios:
     specifier: ^1.5.1
     version: 1.5.1
