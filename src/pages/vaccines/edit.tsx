@@ -24,8 +24,6 @@ export const VaccineEdit: React.FC<IResourceComponentsProps> = () => {
     }
   });
 
-  const vaccinesData = queryResult?.data?.data;
-
   return (
     <Edit saveButtonProps={saveButtonProps}>
       <TextInput mt="sm" disabled label="Id" {...getInputProps("id")} />
