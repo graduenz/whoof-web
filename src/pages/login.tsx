@@ -1,6 +1,6 @@
 import { Button, Box, Space, Text } from "@mantine/core";
 import { ThemedTitleV2 } from "@refinedev/mantine";
-
+import { IconPaw } from "@tabler/icons";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const Login: React.FC = () => {
@@ -17,6 +17,8 @@ export const Login: React.FC = () => {
       }}
     >
       <ThemedTitleV2
+        text="Whoof"
+        icon={<IconPaw />}
         collapsed={false}
         wrapperStyles={{
           fontSize: "22px",

@@ -15,6 +15,7 @@ import {
   notificationProvider,
   RefineThemes,
   ThemedLayoutV2,
+  ThemedTitleV2,
 } from "@refinedev/mantine";
 
 import { dataProvider } from "./rest-data-provider";
@@ -47,7 +48,7 @@ import {
   VaccineEdit,
   VaccineShow,
 } from "./pages/vaccines";
-import { Header, Title, Footer } from "./components";
+import { Header, Footer } from "./components";
 import { Login } from "./pages/login";
 
 function App() {
@@ -203,7 +204,11 @@ function App() {
                         >
                           <ThemedLayoutV2
                             Header={() => <Header sticky />}
-                            Title={() => <Title />}
+                            Title={({ collapsed }) => <ThemedTitleV2
+                              text="Whoof"
+                              icon={<IconPaw />}
+                              collapsed={collapsed}
+                            />}
                             Footer={() => <Footer />}
                           >
                             <Outlet />
