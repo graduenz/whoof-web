@@ -47,7 +47,7 @@ import {
   VaccineEdit,
   VaccineShow,
 } from "./pages/vaccines";
-import { Header, Title } from "./components";
+import { Header, Title, Footer } from "./components";
 import { Login } from "./pages/login";
 
 function App() {
@@ -204,6 +204,7 @@ function App() {
                           <ThemedLayoutV2
                             Header={() => <Header sticky />}
                             Title={() => <Title />}
+                            Footer={() => <Footer />}
                           >
                             <Outlet />
                           </ThemedLayoutV2>

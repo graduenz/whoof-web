@@ -14,7 +14,7 @@ import {
   HamburgerMenu,
   RefineThemedLayoutV2HeaderProps,
 } from "@refinedev/mantine";
-import { IconMoonStars, IconSun } from "@tabler/icons";
+import { IconMoonStars, IconSun, IconBrandGithub } from "@tabler/icons";
 import React from "react";
 
 type IUser = {
@@ -64,6 +64,12 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
       >
         <HamburgerMenu />
         <Group>
+          <ActionIcon
+            title="Open GitHub repository"
+            onClick={() => window.location.href = "https://github.com/graduenz/whoof-web"}
+          >
+            <IconBrandGithub size={18} />
+          </ActionIcon>
           <ActionIcon
             variant="outline"
             color={dark ? "yellow" : "primary"}
