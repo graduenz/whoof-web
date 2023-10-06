@@ -10,8 +10,9 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="dev-qg1ftdys736bk5i3.us.auth0.com"
-      clientId="Be5vsLunFvpzPf4xfXtaMxrZUVBjjNPO"
+      domain="whoof-dev.us.auth0.com"
+      clientId="l5AWlFUz3SUej9LQ1SAbcKEVqp4EysHm"
+      audience="https://whoof/api"
       redirectUri={window.location.origin}
     >
       <App />

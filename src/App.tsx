@@ -1,12 +1,12 @@
 import {
   Refine,
-  GitHubBanner,
-  WelcomePage,
   Authenticated,
   AuthBindings,
 } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
+
+import { IconPaw, IconVaccine } from "@tabler/icons";
 
 import {
   AuthPage,
@@ -35,17 +35,17 @@ import routerBindings, {
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-  BlogPostList,
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostShow,
-} from "./pages/blog-posts";
+  PetList,
+  PetCreate,
+  PetEdit,
+  PetShow,
+} from "./pages/pets";
 import {
-  CategoryList,
-  CategoryCreate,
-  CategoryEdit,
-  CategoryShow,
-} from "./pages/categories";
+  VaccineList,
+  VaccineCreate,
+  VaccineEdit,
+  VaccineShow,
+} from "./pages/vaccines";
 import { Header } from "./components/header";
 import { Login } from "./pages/login";
 
@@ -124,7 +124,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ColorSchemeProvider
           colorScheme={colorScheme}
@@ -132,7 +131,7 @@ function App() {
         >
           {/* You can change the theme colors here. example: theme={{ ...RefineThemes.Magenta, colorScheme:colorScheme }} */}
           <MantineProvider
-            theme={{ ...RefineThemes.Blue, colorScheme: colorScheme }}
+            theme={{ ...RefineThemes.Orange, colorScheme: colorScheme }}
             withNormalizeCSS
             withGlobalStyles
           >
@@ -140,31 +139,35 @@ function App() {
             <NotificationsProvider position="top-right">
               <DevtoolsProvider>
                 <Refine
-                  dataProvider={dataProvider(
-                    "https://api.fake-rest.refine.dev"
-                  )}
+                  dataProvider={dataProvider("http://localhost:5291", axios)}
                   notificationProvider={notificationProvider}
                   routerProvider={routerBindings}
                   authProvider={authProvider}
                   resources={[
                     {
-                      name: "blog_posts",
-                      list: "/blog-posts",
-                      create: "/blog-posts/create",
-                      edit: "/blog-posts/edit/:id",
-                      show: "/blog-posts/show/:id",
+                      name: "v1/pets",
+                      list: "/pets",
+                      create: "/pets/create",
+                      edit: "/pets/edit/:id",
+                      show: "/pets/show/:id",
                       meta: {
+                        label: "My pets",
                         canDelete: true,
+                        icon: <IconPaw />,
+                        apiVersion: 1,
                       },
                     },
                     {
-                      name: "categories",
-                      list: "/categories",
-                      create: "/categories/create",
-                      edit: "/categories/edit/:id",
-                      show: "/categories/show/:id",
+                      name: "v1/vaccines",
+                      list: "/vaccines",
+                      create: "/vaccines/create",
+                      edit: "/vaccines/edit/:id",
+                      show: "/vaccines/show/:id",
                       meta: {
+                        label: "Vaccines",
                         canDelete: true,
+                        icon: <IconVaccine />,
+                        apiVersion: 1,
                       },
                     },
                   ]}
@@ -189,19 +192,19 @@ function App() {
                     >
                       <Route
                         index
-                        element={<NavigateToResource resource="blog_posts" />}
+                        element={<NavigateToResource resource="v1/pets" />}
                       />
-                      <Route path="/blog-posts">
-                        <Route index element={<BlogPostList />} />
-                        <Route path="create" element={<BlogPostCreate />} />
-                        <Route path="edit/:id" element={<BlogPostEdit />} />
-                        <Route path="show/:id" element={<BlogPostShow />} />
+                      <Route path="/pets">
+                        <Route index element={<PetList />} />
+                        <Route path="create" element={<PetCreate />} />
+                        <Route path="edit/:id" element={<PetEdit />} />
+                        <Route path="show/:id" element={<PetShow />} />
                       </Route>
-                      <Route path="/categories">
-                        <Route index element={<CategoryList />} />
-                        <Route path="create" element={<CategoryCreate />} />
-                        <Route path="edit/:id" element={<CategoryEdit />} />
-                        <Route path="show/:id" element={<CategoryShow />} />
+                      <Route path="/vaccines">
+                        <Route index element={<VaccineList />} />
+                        <Route path="create" element={<VaccineCreate />} />
+                        <Route path="edit/:id" element={<VaccineEdit />} />
+                        <Route path="show/:id" element={<VaccineShow />} />
                       </Route>
                       <Route path="*" element={<ErrorComponent />} />
                     </Route>
