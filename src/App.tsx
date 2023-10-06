@@ -9,7 +9,6 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { IconPaw, IconVaccine } from "@tabler/icons";
 
 import {
-  AuthPage,
   ErrorComponent,
   notificationProvider,
   RefineThemes,
@@ -46,7 +45,7 @@ import {
   VaccineEdit,
   VaccineShow,
 } from "./pages/vaccines";
-import { Header } from "./components/header";
+import { Header, Title } from "./components";
 import { Login } from "./pages/login";
 
 function App() {
@@ -151,7 +150,7 @@ function App() {
                       edit: "/pets/edit/:id",
                       show: "/pets/show/:id",
                       meta: {
-                        label: "My pets",
+                        label: "My Pets",
                         canDelete: true,
                         icon: <IconPaw />,
                         apiVersion: 1,
@@ -184,7 +183,10 @@ function App() {
                           key="authenticated-inner"
                           fallback={<CatchAllNavigate to="/login" />}
                         >
-                          <ThemedLayoutV2 Header={() => <Header sticky />}>
+                          <ThemedLayoutV2
+                            Header={() => <Header sticky />}
+                            Title={() => <Title />}
+                          >
                             <Outlet />
                           </ThemedLayoutV2>
                         </Authenticated>
