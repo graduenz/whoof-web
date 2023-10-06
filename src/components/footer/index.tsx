@@ -1,6 +1,5 @@
 import React from "react";
 import { Text } from '@mantine/core';
-import { IconBrandGithub } from "@tabler/icons";
 
 export const Footer : React.FC = () => {
   const divStyle: React.CSSProperties = {
