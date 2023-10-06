@@ -6,6 +6,12 @@ import { stringify } from "query-string";
 type MethodTypes = "get" | "delete" | "head" | "options";
 type MethodTypesWithBody = "post" | "put" | "patch";
 
+const resourceRoutes: Record<string, string> = {
+  "pet": "v1/pets",
+  "vaccine": "v1/vaccines",
+  "pet_vaccination": "v1/pet-vaccination",
+}
+
 export const dataProvider = (
   apiUrl: string,
   httpClient: AxiosInstance = axiosInstance
@@ -14,7 +20,7 @@ export const dataProvider = (
   "createMany" | "updateMany" | "deleteMany"
 > => ({
   getList: async ({ resource, pagination, filters, sorters, meta }) => {
-    const url = `${apiUrl}/${resource}`;
+    const url = `${apiUrl}/${resourceRoutes[resource]}`;
 
     const { current = 1, pageSize = 10, mode = "server" } = pagination ?? {};
 
@@ -52,8 +58,8 @@ export const dataProvider = (
     const total = +headers["x-total-count"];
 
     return {
-      data,
-      total: total || data.length,
+      data: data.items,
+      total: total || data.totalCount,
     };
   },
 
@@ -62,17 +68,17 @@ export const dataProvider = (
     const requestMethod = (method as MethodTypes) ?? "get";
 
     const { data } = await httpClient[requestMethod](
-      `${apiUrl}/${resource}?${stringify({ id: ids })}`,
+      `${apiUrl}/${resourceRoutes[resource]}?${stringify({ id: ids })}`,
       { headers }
     );
 
     return {
-      data,
+      data: data.items,
     };
   },
 
   create: async ({ resource, variables, meta }) => {
-    const url = `${apiUrl}/${resource}`;
+    const url = `${apiUrl}/${resourceRoutes[resource]}`;
 
     const { headers, method } = meta ?? {};
     const requestMethod = (method as MethodTypesWithBody) ?? "post";
@@ -87,10 +93,10 @@ export const dataProvider = (
   },
 
   update: async ({ resource, id, variables, meta }) => {
-    const url = `${apiUrl}/${resource}/${id}`;
+    const url = `${apiUrl}/${resourceRoutes[resource]}/${id}`;
 
     const { headers, method } = meta ?? {};
-    const requestMethod = (method as MethodTypesWithBody) ?? "patch";
+    const requestMethod = (method as MethodTypesWithBody) ?? "put";
 
     const { data } = await httpClient[requestMethod](url, variables, {
       headers,
@@ -102,7 +108,7 @@ export const dataProvider = (
   },
 
   getOne: async ({ resource, id, meta }) => {
-    const url = `${apiUrl}/${resource}/${id}`;
+    const url = `${apiUrl}/${resourceRoutes[resource]}/${id}`;
 
     const { headers, method } = meta ?? {};
     const requestMethod = (method as MethodTypes) ?? "get";
@@ -115,7 +121,7 @@ export const dataProvider = (
   },
 
   deleteOne: async ({ resource, id, variables, meta }) => {
-    const url = `${apiUrl}/${resource}/${id}`;
+    const url = `${apiUrl}/${resourceRoutes[resource]}/${id}`;
 
     const { headers, method } = meta ?? {};
     const requestMethod = (method as MethodTypesWithBody) ?? "delete";
