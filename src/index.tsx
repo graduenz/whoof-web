@@ -14,7 +14,7 @@ root.render(
       clientId="l5AWlFUz3SUej9LQ1SAbcKEVqp4EysHm"
       authorizationParams={{
         audience: "https://whoof/api",
-        redirectUri: window.location.origin,
+        redirect_uri: window.location.origin,
       }}
     >
       <App />
