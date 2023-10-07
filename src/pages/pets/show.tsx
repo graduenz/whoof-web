@@ -1,5 +1,5 @@
 import { IResourceComponentsProps, useShow } from "@refinedev/core";
-import { Show, TextField, EmailField, DateField } from "@refinedev/mantine";
+import { Show, TextField, DateField } from "@refinedev/mantine";
 import { Title, Tabs, Code } from "@mantine/core";
 import { IconPaw, IconReportSearch, IconVaccine } from "@tabler/icons";
 
@@ -10,7 +10,10 @@ export const PetShow: React.FC<IResourceComponentsProps> = () => {
   const record = data?.data;
 
   return (
-    <Show isLoading={isLoading}>
+    <Show
+      isLoading={isLoading}
+      title={<Title size="h3">{record?.name}</Title>}
+    >
       <Tabs defaultValue="pet">
         <Tabs.List>
           <Tabs.Tab value="pet" icon={<IconPaw size={14} />}>Pet</Tabs.Tab>

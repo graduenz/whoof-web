@@ -8,8 +8,6 @@ import {
   EditButton,
   ShowButton,
   DeleteButton,
-  EmailField,
-  DateField,
 } from "@refinedev/mantine";
 
 export const PetList: React.FC<IResourceComponentsProps> = () => {

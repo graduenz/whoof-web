@@ -12,7 +12,7 @@ export const Footer : React.FC = () => {
   return (
     <div style={divStyle}>
       <Text>
-        Whoof @ {new Date().getFullYear()} ― MIT licensed, open source project created by <Text component="a" href="https://rdnz.dev">Guilherme Raduenz</Text>.
+        Whoof @ {new Date().getFullYear()} ― MIT licensed, open source project created by <Text component="a" variant="link" href="https://rdnz.dev">Guilherme Raduenz</Text>.
       </Text>
     </div>
   );

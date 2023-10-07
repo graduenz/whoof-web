@@ -10,7 +10,10 @@ export const VaccineShow: React.FC<IResourceComponentsProps> = () => {
   const record = data?.data;
 
   return (
-    <Show isLoading={isLoading}>
+    <Show
+      isLoading={isLoading}
+      title={<Title size="h3">{record?.name} ({record?.petType})</Title>}
+    >
       <Tabs defaultValue="vaccine">
         <Tabs.List>
           <Tabs.Tab value="vaccine" icon={<IconVaccine size={14} />}>Vaccine</Tabs.Tab>
