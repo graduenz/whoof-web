@@ -59,6 +59,9 @@ dependencies:
   axios:
     specifier: ^1.5.1
     version: 1.5.1
+  dayjs:
+    specifier: ^1.11.10
+    version: 1.11.10
   query-string:
     specifier: 7.1.1
     version: 7.1.1
