@@ -159,7 +159,7 @@ function App() {
             <NotificationsProvider position="top-right">
               <DevtoolsProvider>
                 <Refine
-                  dataProvider={dataProvider("http://localhost:5291", axios)}
+                  dataProvider={dataProvider(import.meta.env.VITE_API_URL, axios)}
                   notificationProvider={notificationProvider}
                   routerProvider={routerBindings}
                   authProvider={authProvider}
