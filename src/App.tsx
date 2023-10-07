@@ -188,6 +188,14 @@ function App() {
                         icon: <IconVaccine />,
                       },
                     },
+                    {
+                      name: "pet_vaccination",
+                      meta: {
+                        label: "Pet Vaccination",
+                        canDelete: true,
+                        icon: <IconVaccine />,
+                      },
+                    },
                   ]}
                   options={{
                     syncWithLocation: true,

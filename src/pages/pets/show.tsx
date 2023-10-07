@@ -3,6 +3,8 @@ import { Show, TextField, DateField } from "@refinedev/mantine";
 import { Title, Tabs, Code } from "@mantine/core";
 import { IconPaw, IconReportSearch, IconVaccine } from "@tabler/icons";
 
+import { PetVaccinationList } from "./components";
+
 export const PetShow: React.FC<IResourceComponentsProps> = () => {
   const { queryResult } = useShow();
   const { data, isLoading } = queryResult;
@@ -18,7 +20,7 @@ export const PetShow: React.FC<IResourceComponentsProps> = () => {
         <Tabs.List>
           <Tabs.Tab value="pet" icon={<IconPaw size={14} />}>Pet</Tabs.Tab>
           <Tabs.Tab value="audit" icon={<IconReportSearch size={14} />}>Audit</Tabs.Tab>
-          <Tabs.Tab value="vaccines" icon={<IconVaccine size={14} />}>Vaccines</Tabs.Tab>
+          <Tabs.Tab value="vaccination" icon={<IconVaccine size={14} />}>Vaccination</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="pet" pt="xs">
           <Title my="xs" order={5}>
@@ -52,8 +54,8 @@ export const PetShow: React.FC<IResourceComponentsProps> = () => {
           </Title>
           <TextField value={record?.modifiedBy} />
         </Tabs.Panel>
-        <Tabs.Panel value="vaccines" pt="xs">
-          Coming soon!
+        <Tabs.Panel value="vaccination" pt="xs">
+          <PetVaccinationList />
         </Tabs.Panel>
       </Tabs>
     </Show>
