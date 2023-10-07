@@ -14,7 +14,7 @@ import {
   HamburgerMenu,
   RefineThemedLayoutV2HeaderProps,
 } from "@refinedev/mantine";
-import { IconMoonStars, IconSun, IconBrandGithub } from "@tabler/icons";
+import { IconMoonStars, IconSun, IconBrandGithub, IconBook } from "@tabler/icons";
 import React from "react";
 
 type IUser = {
@@ -64,20 +64,32 @@ export const Header: React.FC<RefineThemedLayoutV2HeaderProps> = ({
       >
         <HamburgerMenu />
         <Group>
-          <ActionIcon
-            title="Open GitHub repository"
-            onClick={() => window.location.href = "https://github.com/graduenz/whoof-web"}
-          >
-            <IconBrandGithub size={18} />
-          </ActionIcon>
-          <ActionIcon
-            variant="outline"
-            color={dark ? "yellow" : "primary"}
-            onClick={() => toggleColorScheme()}
-            title="Toggle color scheme"
-          >
-            {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
-          </ActionIcon>
+          <Group spacing="xs">
+            <ActionIcon
+              color="dark"
+              component="a"
+              href="https://github.com/graduenz/whoof-web"
+              title="GitHub repository"
+            >
+              <IconBrandGithub size={18} />
+            </ActionIcon>
+            <ActionIcon
+              color="dark"
+              component="a"
+              href="https://whoof-docs.rdnz.dev/"
+              title="Official docs"
+            >
+              <IconBook size={18} />
+            </ActionIcon>
+            <ActionIcon
+              variant="outline"
+              color={dark ? "yellow" : "primary"}
+              onClick={() => toggleColorScheme()}
+              title="Toggle color scheme"
+            >
+              {dark ? <IconSun size={18} /> : <IconMoonStars size={18} />}
+            </ActionIcon>
+          </Group>
           {(user?.name || user?.avatar) && (
             <Group spacing="xs">
               {user?.name && <Title order={6}>{user?.name}</Title>}
