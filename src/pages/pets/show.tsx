@@ -55,7 +55,7 @@ export const PetShow: React.FC<IResourceComponentsProps> = () => {
           <TextField value={record?.modifiedBy} />
         </Tabs.Panel>
         <Tabs.Panel value="vaccination" pt="xs">
-          <PetVaccinationList />
+          <PetVaccinationList pet={record} />
         </Tabs.Panel>
       </Tabs>
     </Show>

@@ -226,7 +226,7 @@ function App() {
                     >
                       <Route
                         index
-                        element={<NavigateToResource resource="v1/pets" />}
+                        element={<NavigateToResource resource="pets" />}
                       />
                       <Route path="/pets">
                         <Route index element={<PetList />} />
